@@ -32,10 +32,8 @@ client.on('ready', () => {
 });
 
 client.on('message_create', async (message: Message) => {
-    const chatId = message.from;
+    const chatId = message.fromMe ? message.to : message.from;
     const messageBody = message.body.trim();
-
-    console.log(`[MENSAGEM RECEBIDA] ${messageBody} de ${chatId}`);
 
     // --- Lógica de Gatilhos (CONTROLADA PELO OPERADOR) ---
     // Apenas mensagens enviadas por "mim" podem acionar os gatilhos.
